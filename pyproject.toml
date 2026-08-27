@@ -5,6 +5,7 @@ description = "A personal dashboard where you can record past and upcoming holid
 requires-python = ">=3.14"
 dependencies = [
     "django>=5.1,<6.0",
+    "pillow>=12.3.0",
 ]
 
 [project.optional-dependencies]
