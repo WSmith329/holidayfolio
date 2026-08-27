@@ -1,3 +1,6 @@
+# Holidayfolio .gitignore
+media/holiday_covers
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
