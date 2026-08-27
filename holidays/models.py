@@ -17,5 +17,9 @@ class Holiday(models.Model):
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        from django.urls import reverse_lazy
+        return reverse_lazy('holiday-detail', kwargs={'slug': self.slug})
+
     def __str__(self):
         return f"{self.name} ({self.start_date} to {self.end_date})"
