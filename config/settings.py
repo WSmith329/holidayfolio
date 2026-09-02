@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     
     # Holidayfolio apps
     'holidays',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +127,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ # Email backend configuration for development
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Login and logout redirect URLs
+
+LOGIN_REDIRECT_URL = "holiday-list"
+LOGOUT_REDIRECT_URL = "login"

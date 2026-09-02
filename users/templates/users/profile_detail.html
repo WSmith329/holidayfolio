@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if object.avatar %}
+        <img src="{{ object.avatar.url }}" alt="{{ object.name }}">
+    {% endif %}
+    <h1>{{ object.user.username }}'s Profile</h1>
+    <p>{{ object.birth_date|date }}</p>
+    <p>{{ object.bio }}</p>
+{% endblock %}

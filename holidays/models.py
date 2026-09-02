@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.conf import settings
 
 class Holiday(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -11,6 +12,7 @@ class Holiday(models.Model):
     cover_image = models.ImageField(upload_to='holiday_covers/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified_at = models.DateTimeField(auto_now=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='holidays')
 
     def save(self, *args, **kwargs):
         if not self.slug:
