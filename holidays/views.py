@@ -7,6 +7,9 @@ from .models import Holiday
 class HolidayListView(ListView):
     model = Holiday
 
+    def get_queryset(self):
+        return Holiday.objects.filter(owner=self.request.user)
+
 class HolidayDetailView(DetailView):
     model = Holiday
 
@@ -14,6 +17,10 @@ class HolidayDetailView(DetailView):
 class HolidayCreateView(CreateView):
     model = Holiday
     fields = ['name', 'start_date', 'end_date', 'description', 'cover_image']
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 class HolidayUpdateView(UpdateView):
     model = Holiday
