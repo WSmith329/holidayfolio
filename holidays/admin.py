@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Holiday
 
-# Register your models here.
+class HolidayAdmin(admin.ModelAdmin):
+    list_display = ('name', 'start_date', 'end_date', 'owner')
+    search_fields = ('name', 'description', 'owner__username')
+    list_filter = ('start_date', 'end_date')
+
+admin.site.register(Holiday, HolidayAdmin)
