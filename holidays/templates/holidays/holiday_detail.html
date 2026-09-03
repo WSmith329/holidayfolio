@@ -1,9 +1,13 @@
-<a href="{% url 'holiday-list' %}">Back to Holidays</a>
-{% if holiday.cover_image %}
-    <img src="{{ object.cover_image.url }}" alt="{{ object.name }}">
-{% endif %}
-<h1>{{ object.name }}</h1>
-<p>{{ object.description }}</p>
-<p>Start: {{ object.start_date|date }}</p>
-<p>End: {{ object.end_date|date }}</p>
-<p>{{ object.status }}</p>
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="{% url 'holiday-list' %}">Back to Holidays</a>
+    {% if holiday.cover_image %}
+        <img src="{{ object.cover_image.url }}" alt="{{ object.name }}">
+    {% endif %}
+    <h1>{{ object.name }}</h1>
+    <p>{{ object.description }}</p>
+    <p>Start: {{ object.start_date|date }}</p>
+    <p>End: {{ object.end_date|date }}</p>
+    <p>{{ object.status }}</p>
+{% endblock %}

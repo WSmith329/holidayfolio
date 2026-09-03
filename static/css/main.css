@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page structure styles */
+body {
+    color: black;
+    background-color: white;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns: 1fr min(1200px, 100%) 1fr;
+    grid-template-rows: auto 1fr auto;
+}
+.page-grid > * {
+    grid-column: 2;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.full-bleed {
+    grid-column: 1 / -1; /* opts an element back out to full width */
+}
+
+/* Header styles */
+header {
+    display: flex;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+header div {
+    flex: 1;
+}
+header div:nth-of-type(1) {
+    text-align: left;
+}
+header div:nth-of-type(2) {
+    text-align: center;
+}
+header div:nth-of-type(3) {
+    text-align: right;
+}
+
+header .nav-link {
+    color: black;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+header .nav-link:hover {
+    color: orange;
+    transition: color 0.3s ease;
+}
+
+/* Main styles */
+
+/* Footer styles */

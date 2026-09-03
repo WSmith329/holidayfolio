@@ -1,13 +1,17 @@
-<h1>Holidays</h1>
-<ul>
-{% for holiday in object_list %}
-    <li>
-        <a href="{% url 'holiday-detail' slug=holiday.slug %}">{{ holiday.start_date|date }} - {{ holiday.name }}</a>
-         <a href="{% url 'holiday-update' slug=holiday.slug %}">Edit</a>
-         <a href="{% url 'holiday-delete' slug=holiday.slug %}">Delete</a>
-    </li>
-{% empty %}
-    <li>No holidays yet.</li>
-{% endfor %}
-</ul>
-<a href="{% url 'holiday-create' %}">Create a new holiday</a>
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Holidays</h1>
+    <ul>
+    {% for holiday in object_list %}
+        <li>
+            <a href="{% url 'holiday-detail' slug=holiday.slug %}">{{ holiday.start_date|date }} - {{ holiday.name }}</a>
+            <a href="{% url 'holiday-update' slug=holiday.slug %}">Edit</a>
+            <a href="{% url 'holiday-delete' slug=holiday.slug %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No holidays yet.</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'holiday-create' %}">Create a new holiday</a>
+{% endblock %}
