@@ -2,7 +2,7 @@
 
 {% block content %}
     <a href="{% url 'holiday-list' %}">Back to Holidays</a>
-    {% if holiday.cover_image %}
+    {% if object.cover_image %}
         <img src="{{ object.cover_image.url }}" alt="{{ object.name }}">
     {% endif %}
     <h1>{{ object.name }}</h1>
@@ -10,4 +10,15 @@
     <p>Start: {{ object.start_date|date }}</p>
     <p>End: {{ object.end_date|date }}</p>
     <p>{{ object.status }}</p>
+    <h2>Destinations</h2>
+    {% for destination in object.destinations.all %}
+        <h3>{{ destination.name }}</h2>
+        <p>{{ destination.description }}</p>
+        <p>{{ destination.country }}</p>
+        <a href="{% url 'destination-update' pk=destination.id %}">Edit</a>
+        <a href="{% url 'destination-delete' pk=destination.id %}">Delete</a>
+    {% empty %}
+        <p>No destinations added.</p>
+    {% endfor %}
+    <p><a href="{% url 'destination-create' holiday=object.slug %}">Add Destination</a></p>
 {% endblock %}

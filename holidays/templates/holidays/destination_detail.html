@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="{% url 'holiday-detail' object.holiday.id %}">Back to Holiday</a>
+    {% if destination.image %}
+        <img src="{{ object.image.url }}" alt="{{ object.name }}">
+    {% endif %}
+    <h1>{{ object.name }}</h1>
+    <h2>{{ object.holiday.name }}</h2>
+    <p>{{ object.description }}</p>
+    <p>{{ object.country }}</p>
+{% endblock %}
