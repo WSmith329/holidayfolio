@@ -25,3 +25,20 @@ class Holiday(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.start_date} to {self.end_date})"
+
+class Country(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    code = models.CharField(max_length=3, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Destination(models.Model):
+    holiday = models.ForeignKey(Holiday, on_delete=models.CASCADE, related_name='destinations')
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='destination_images/', blank=True, null=True)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='destinations')
+
+    def __str__(self):
+        return f"{self.name} ({self.holiday.name})"
