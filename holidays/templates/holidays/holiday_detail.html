@@ -11,14 +11,15 @@
     <p>End: {{ object.end_date|date }}</p>
     <p>{{ object.status }}</p>
     <h2>Destinations</h2>
-    {% for destination in object.destinations.all %}
-        <h3>{{ destination.name }}</h2>
-        <p>{{ destination.description }}</p>
-        <p>{{ destination.country }}</p>
-        <a href="{% url 'destination-update' pk=destination.id %}">Edit</a>
-        <a href="{% url 'destination-delete' pk=destination.id %}">Delete</a>
+    {% for holiday_destination in object.holiday_destinations.all %}
+        <h3>{{ holiday_destination.destination.name }}</h2>
+        <p>{{ holiday_destination.destination.description }}</p>
+        <p>{{ holiday_destination.destination.country }}</p>
+        <p>{{ holiday_destination.arrival_date }} - {{ holiday_destination.departure_date }}</p>
+        <a href="{% url 'holiday-destination-update' pk=holiday_destination.id %}">Edit</a>
+        <a href="{% url 'holiday-destination-delete' pk=holiday_destination.id %}">Delete</a>
     {% empty %}
         <p>No destinations added.</p>
     {% endfor %}
-    <p><a href="{% url 'destination-create' holiday=object.slug %}">Add Destination</a></p>
+    <p><a href="{% url 'holiday-destination-create' holiday=object.slug %}">Add Destination</a></p>
 {% endblock %}
