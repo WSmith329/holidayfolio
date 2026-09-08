@@ -1,25 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <a href="{% url 'holiday-list' %}">Back to Holidays</a>
-    {% if object.cover_image %}
-        <img src="{{ object.cover_image.url }}" alt="{{ object.name }}">
-    {% endif %}
-    <h1>{{ object.name }}</h1>
-    <p>{{ object.description }}</p>
-    <p>Start: {{ object.start_date|date }}</p>
-    <p>End: {{ object.end_date|date }}</p>
-    <p>{{ object.status }}</p>
-    <h2>Destinations</h2>
+    <div class="cover-image-container">
+        {% if object.cover_image %}
+                <img src="{{ object.cover_image.url }}" alt="{{ object.name }}" class="cover-image">
+        {% endif %}
+    </div>
+    <div class="detail-header">
+        <h1>{{ object.name }}</h1> 
+        <p>{{ object.description }}</p>
+        <p>{{ object.start_date|date:"j M" }} - {{ object.end_date|date:"j M" }}</p>
+    </div>
     {% for holiday_destination in object.holiday_destinations.all %}
-        <h3>{{ holiday_destination.destination.name }}</h2>
-        <p>{{ holiday_destination.destination.description }}</p>
-        <p>{{ holiday_destination.destination.country }}</p>
-        <p>{{ holiday_destination.arrival_date }} - {{ holiday_destination.departure_date }}</p>
-        <a href="{% url 'holiday-destination-update' pk=holiday_destination.id %}">Edit</a>
-        <a href="{% url 'holiday-destination-delete' pk=holiday_destination.id %}">Delete</a>
+        <div class="detail-section">
+            <h2>{{ holiday_destination.destination.name }}</h2>
+            <p class="destination-country">{{ holiday_destination.destination.country }}</p>
+            <p>{{ holiday_destination.destination.description }}</p>
+            <div class="destination-date">
+                <div class="date">{{ holiday_destination.arrival_date|date:"D" }}<br>{{ holiday_destination.arrival_date|date:"j" }}</div>
+                <p>Arrival</p>
+            </div>
+            <div class="destination-date">
+                <div class="date">{{ holiday_destination.departure_date|date:"D" }}<br>{{ holiday_destination.departure_date|date:"j" }}</div>
+                <p>Departure</p>
+            </div>
+            <div class="links">
+                <p><a class="orange-button" href="{% url 'holiday-destination-update' pk=holiday_destination.id %}">Edit</a></p>
+                <p><a class="orange-button" href="{% url 'holiday-destination-delete' pk=holiday_destination.id %}">Delete</a></p>
+            </div>
+        </div>
     {% empty %}
         <p>No destinations added.</p>
     {% endfor %}
-    <p><a href="{% url 'holiday-destination-create' holiday=object.slug %}">Add Destination</a></p>
+    <div class="detail-footer">
+        <p><a class="blank-link" href="{% url 'holiday-destination-create' holiday=object.slug %}"><i class="fa-solid fa-plus-circle"></i> Add Destination</a></p>
+    </div>
 {% endblock %}

@@ -3,6 +3,36 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+p, div {
+    cursor: default;
+}
+
+/* Button/Link styles */
+.orange-button {
+    text-decoration: none;
+    border: 0;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: orange;
+    color: color-mix(in srgb, orange 25%, white);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.orange-button:hover {
+    background-color: color-mix(in srgb, orange 80%, white);
+    color: color-mix(in srgb, orange 5%, white);
+    transition: 0.3s ease;
+}
+
+.blank-link {
+    text-decoration: none;
+    color: black;
+}
+.blank-link:hover {
+    color: color-mix(in srgb, white 20%, black);
+    transition: color ease 0.3s;
+}
+
 /* Page structure styles */
 body {
     color: black;
@@ -62,5 +92,92 @@ header .nav-link:hover {
 }
 
 /* Main styles */
+main .cover-image-container {
+    width: 100%;
+    height: 30rem;
+    background-color: whitesmoke;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin-bottom: 4rem;
+}
+
+main .cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+main .detail-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+main .detail-header h1 {
+    margin-bottom: 0;
+}
+
+main .detail-header p {
+    margin: 0;
+    color: gray;
+}
+
+main .detail-section {
+    padding: 0.25rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px, rgba(0, 0, 0, 0.025) 0px 3px 3px 0px inset;
+    background-color: color-mix(in srgb, black 2%, white);
+}
+
+main .destination-date {
+    display: flex;
+    align-items: center;
+    gap: 0 1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+main .destination-date .date {
+    background-color: color-mix(in srgb, orange 25%, white);
+    color: orange;
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    height: 2.5rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .destination-date p {
+    margin: 0;
+}
+
+main .detail-section h2 {
+    margin-bottom: 0;
+}
+
+main .detail-section .links {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+main .destination-country {
+    margin-top: 0;
+    color: gray;
+}
+
+main .detail-footer {
+    padding: 0.25rem 2rem;
+    margin-bottom: 4rem;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    background-color: color-mix(in srgb, black 27%, white);
+    font-weight: bold;
+}
 
 /* Footer styles */
