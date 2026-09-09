@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% if object %}
+        <h1>Editing {{ object.name }}</h1>
+    {% else %}
+        <h1>Creating a new holiday</h1>
+    {% endif %}
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Save">

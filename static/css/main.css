@@ -180,4 +180,114 @@ main .detail-footer {
     font-weight: bold;
 }
 
+/* Form styles */
+main form {
+    margin-bottom: 4rem;
+}
+
+main form > p {
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+}
+
+main form label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: black;
+}
+
+main form input[type="text"],
+main form input[type="email"],
+main form input[type="number"],
+main form input[type="date"],
+main form input[type="password"],
+main form select,
+main form textarea {
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid color-mix(in srgb, black 15%, white);
+    border-radius: 0.5rem;
+    background-color: white;
+    color: black;
+}
+
+main form input:focus,
+main form select:focus,
+main form textarea:focus {
+    outline: none;
+    border-color: orange;
+    box-shadow: 0 0 0 3px color-mix(in srgb, orange 20%, white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+main form textarea {
+    resize: vertical;
+    min-height: 6rem;
+}
+
+main form input[type="checkbox"],
+main form input[type="radio"] {
+    accent-color: orange;
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Django's built-in help text and required asterisk */
+main form .helptext {
+    font-size: 0.8rem;
+    color: gray;
+    margin: 0;
+}
+
+main form label.requiredField::after {
+    content: " *";
+    color: orange;
+}
+
+/* Django's built-in error list */
+main form .errorlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: color-mix(in srgb, orange 70%, black 30%);
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+main form div.errors input,
+main form div.errors select,
+main form div.errors textarea {
+    border-color: color-mix(in srgb, orange 70%, black 30%);
+}
+
+/* Disabled fields (e.g. destination shown but locked in an UpdateView) */
+main form input:disabled,
+main form select:disabled,
+main form textarea:disabled {
+    background-color: whitesmoke;
+    color: gray;
+    cursor: not-allowed;
+}
+
+/* Submit button — reuse your existing orange-button look, sized for forms */
+main form input[type="submit"] {
+    align-self: flex-start;
+    text-decoration: none;
+    border: 0;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1.25rem;
+    background-color: orange;
+    color: color-mix(in srgb, orange 25%, white);
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+main form input[type="submit"]:hover {
+    background-color: color-mix(in srgb, orange 80%, white);
+    color: color-mix(in srgb, orange 5%, white);
+    transition: 0.3s ease;
+}
+
+
 /* Footer styles */

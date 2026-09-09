@@ -2,7 +2,10 @@
 
 {% block content %}
     {% if object %}
-        <p>Destination: {{ object.destination.name }} <a href="{% url 'destination-update' pk=object.destination.id %}?next={{ request.path }}">Edit</a></p>
+        <h1>Editing destination</h1>
+        <p><b>Destination:</b> {{ object.destination.name }} <a class="orange-button" href="{% url 'destination-update' pk=object.destination.id %}?next={{ request.path }}">Edit</a></p>
+    {% else %}
+        <h1>Adding destination</h1>
     {% endif %}
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
         {{ form.as_p }}
