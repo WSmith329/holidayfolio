@@ -180,6 +180,43 @@ main .detail-footer {
     font-weight: bold;
 }
 
+/* Holiday list styles */
+main .holiday-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+main .holiday-list-item {
+    width: 100%;
+    height: 20rem;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-color: gray;
+}
+
+main .holiday-list-text {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+}
+
+main .holiday-list-text a h2 {
+    color: white;
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.10),
+        2px 2px 0 rgba(0, 0, 0, 0.08),
+        3px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+main .holiday-list-text div {
+    display: flex;
+    gap: 1rem;
+    justify-content: end;
+    width: 100%;
+}
+
 /* Form styles */
 main form {
     margin-bottom: 4rem;
