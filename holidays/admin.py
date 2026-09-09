@@ -11,9 +11,9 @@ class CountryAdmin(admin.ModelAdmin):
     search_fields = ('name', 'code')
 
 class DestinationAdmin(admin.ModelAdmin):
-    list_display = ('name', 'holiday', 'country')
-    search_fields = ('name', 'description', 'holiday__name', 'country__name')
-    list_filter = ('holiday', 'country')
+    list_display = ('name', 'country')
+    search_fields = ('name', 'description', 'country__name')
+    list_filter = ('country',)
 
 admin.site.register(Holiday, HolidayAdmin)
 admin.site.register(Country, CountryAdmin)

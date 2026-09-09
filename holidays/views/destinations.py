@@ -1,30 +1,41 @@
+from urllib.parse import urlparse
+
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, resolve, Resolver404
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from ..models import Destination, Holiday
 
 # Mixins
-class HolidaySuccessUrlMixin:
+class DestinationSuccessUrlMixin:
     def get_success_url(self):
-        return reverse_lazy('holiday-detail', kwargs={'slug': self.object.holiday.slug})
+        next_url = self.request.POST.get('next') or self.request.GET.get('next')
+
+        if next_url and url_has_allowed_host_and_scheme(
+            next_url, allowed_hosts={self.request.get_host()}
+        ):
+            path = urlparse(next_url).path
+            try:
+                match = resolve(path)
+                if match.url_name == 'holiday-destination-update':
+                    return next_url
+            except Resolver404:
+                pass
+
+        return reverse_lazy('holiday-list')
 
 # Display views
 class DestinationDetailView(LoginRequiredMixin, DetailView):
     model = Destination
 
 # Editing views
-class DestinationCreateView(LoginRequiredMixin, HolidaySuccessUrlMixin, CreateView):
+# DestinationCreateView is removed as destination creation is only handled in HolidayDestinationCreateView.
+
+class DestinationUpdateView(LoginRequiredMixin, DestinationSuccessUrlMixin, UpdateView):
     model = Destination
     fields = ['name', 'description', 'image', 'country']
 
-    def form_valid(self, form):
-        form.instance.holiday = Holiday.objects.get(slug=self.kwargs['holiday'])
-        return super().form_valid(form)
-
-class DestinationUpdateView(LoginRequiredMixin, HolidaySuccessUrlMixin, UpdateView):
-    model = Destination
-    fields = ['name', 'description', 'image', 'country']
-
-class DestinationDeleteView(LoginRequiredMixin, HolidaySuccessUrlMixin, DeleteView):
+class DestinationDeleteView(LoginRequiredMixin, DestinationSuccessUrlMixin, DeleteView):
     model = Destination

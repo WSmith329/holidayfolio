@@ -2,11 +2,13 @@ from django.db import models
 from django.utils.text import slugify
 from django.conf import settings
 
+from .fields import DatePickerField
+
 class Holiday(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(unique=True)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = DatePickerField()
+    end_date = DatePickerField()
     description = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=20, choices=[('planned', 'Planned'), ('upcoming', 'Upcoming'), ('completed', 'Completed')], default='planned')
     cover_image = models.ImageField(upload_to='holiday_covers/', blank=True, null=True)
@@ -34,11 +36,24 @@ class Country(models.Model):
         return self.name
 
 class Destination(models.Model):
-    holiday = models.ForeignKey(Holiday, on_delete=models.CASCADE, related_name='destinations')
+    holiday = models.ManyToManyField(Holiday, related_name='destinations', through='HolidayDestination')
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='destination_images/', blank=True, null=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='destinations')
 
     def __str__(self):
-        return f"{self.name} ({self.holiday.name})"
+        return self.name
+
+class HolidayDestination(models.Model):
+    holiday = models.ForeignKey(Holiday, on_delete=models.CASCADE, related_name='holiday_destinations')
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name='destination_holidays')
+    arrival_date = DatePickerField(blank=True, null=True)
+    departure_date = DatePickerField(blank=True, null=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        unique_together = ('holiday', 'destination')
+
+    def __str__(self):
+        return f"{self.holiday.name} - {self.destination.name}"
