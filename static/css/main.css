@@ -3,6 +3,36 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+p, div {
+    cursor: default;
+}
+
+/* Button/Link styles */
+.orange-button {
+    text-decoration: none;
+    border: 0;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: orange;
+    color: color-mix(in srgb, orange 25%, white);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.orange-button:hover {
+    background-color: color-mix(in srgb, orange 80%, white);
+    color: color-mix(in srgb, orange 5%, white);
+    transition: 0.3s ease;
+}
+
+.blank-link {
+    text-decoration: none;
+    color: black;
+}
+.blank-link:hover {
+    color: color-mix(in srgb, white 20%, black);
+    transition: color ease 0.3s;
+}
+
 /* Page structure styles */
 body {
     color: black;
@@ -62,5 +92,239 @@ header .nav-link:hover {
 }
 
 /* Main styles */
+main .cover-image-container {
+    width: 100%;
+    height: 30rem;
+    background-color: whitesmoke;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin-bottom: 4rem;
+}
+
+main .cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+main .detail-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+main .detail-header h1 {
+    margin-bottom: 0;
+}
+
+main .detail-header p {
+    margin: 0;
+    color: gray;
+}
+
+main .detail-section {
+    padding: 0.25rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px, rgba(0, 0, 0, 0.025) 0px 3px 3px 0px inset;
+    background-color: color-mix(in srgb, black 2%, white);
+}
+
+main .destination-date {
+    display: flex;
+    align-items: center;
+    gap: 0 1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+main .destination-date .date {
+    background-color: color-mix(in srgb, orange 25%, white);
+    color: orange;
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    height: 2.5rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .destination-date p {
+    margin: 0;
+}
+
+main .detail-section h2 {
+    margin-bottom: 0;
+}
+
+main .detail-section .links {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+main .destination-country {
+    margin-top: 0;
+    color: gray;
+}
+
+main .detail-footer {
+    padding: 0.25rem 2rem;
+    margin-bottom: 4rem;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    background-color: color-mix(in srgb, black 27%, white);
+    font-weight: bold;
+}
+
+/* Holiday list styles */
+main .holiday-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+main .holiday-list-item {
+    width: 100%;
+    height: 20rem;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-color: gray;
+}
+
+main .holiday-list-text {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+}
+
+main .holiday-list-text a h2 {
+    color: white;
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.10),
+        2px 2px 0 rgba(0, 0, 0, 0.08),
+        3px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+main .holiday-list-text div {
+    display: flex;
+    gap: 1rem;
+    justify-content: end;
+    width: 100%;
+}
+
+/* Form styles */
+main form {
+    margin-bottom: 4rem;
+}
+
+main form > p {
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+}
+
+main form label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: black;
+}
+
+main form input[type="text"],
+main form input[type="email"],
+main form input[type="number"],
+main form input[type="date"],
+main form input[type="password"],
+main form select,
+main form textarea {
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid color-mix(in srgb, black 15%, white);
+    border-radius: 0.5rem;
+    background-color: white;
+    color: black;
+}
+
+main form input:focus,
+main form select:focus,
+main form textarea:focus {
+    outline: none;
+    border-color: orange;
+    box-shadow: 0 0 0 3px color-mix(in srgb, orange 20%, white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+main form textarea {
+    resize: vertical;
+    min-height: 6rem;
+}
+
+main form input[type="checkbox"],
+main form input[type="radio"] {
+    accent-color: orange;
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Django's built-in help text and required asterisk */
+main form .helptext {
+    font-size: 0.8rem;
+    color: gray;
+    margin: 0;
+}
+
+main form label.requiredField::after {
+    content: " *";
+    color: orange;
+}
+
+/* Django's built-in error list */
+main form .errorlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: color-mix(in srgb, orange 70%, black 30%);
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+main form div.errors input,
+main form div.errors select,
+main form div.errors textarea {
+    border-color: color-mix(in srgb, orange 70%, black 30%);
+}
+
+/* Disabled fields (e.g. destination shown but locked in an UpdateView) */
+main form input:disabled,
+main form select:disabled,
+main form textarea:disabled {
+    background-color: whitesmoke;
+    color: gray;
+    cursor: not-allowed;
+}
+
+/* Submit button — reuse your existing orange-button look, sized for forms */
+main form input[type="submit"] {
+    align-self: flex-start;
+    text-decoration: none;
+    border: 0;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1.25rem;
+    background-color: orange;
+    color: color-mix(in srgb, orange 25%, white);
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+main form input[type="submit"]:hover {
+    background-color: color-mix(in srgb, orange 80%, white);
+    color: color-mix(in srgb, orange 5%, white);
+    transition: 0.3s ease;
+}
+
 
 /* Footer styles */
