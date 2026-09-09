@@ -23,4 +23,14 @@
         {% endblock header %}
         <main>{% block content %}{% endblock content %}</main>
     </body>
+
+    <footer>
+        <nav>
+            <div>
+                <a href="{% url 'holiday-list' %}" class="blank-link {% if request.resolver_match.url_name == 'holiday-list' %}active{% endif %}"><i class="fa-solid fa-house"></i></a>
+                <a href="{% url 'holiday-create' %}" class="blank-link {% if request.resolver_match.url_name not in 'holiday-list, profile-detail' %}active{% endif %}"><i class="fa-regular fa-circle"></i></a>
+                <a href="{% url 'profile-detail' %}" class="blank-link {% if request.resolver_match.url_name == 'profile-detail' %}active{% endif %}"><i class="fa-solid fa-user"></i></a>
+            </div>
+        </nav>
+    </footer>
 </html>

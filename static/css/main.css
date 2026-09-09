@@ -328,3 +328,37 @@ main form input[type="submit"]:hover {
 
 
 /* Footer styles */
+footer {
+    position: fixed;
+    bottom: 4rem;
+    width: 100vw;
+}
+
+footer > nav {
+    display: flex;
+    justify-content: center;
+}
+
+footer nav div {
+    display: flex;
+    border-radius: 2rem;
+
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+footer nav div a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    flex: 1;
+}
+
+footer nav div a.active {
+    color: rgb(255, 165, 0);
+    background: rgba(255, 165, 0, 0.2);
+    border-radius: 2rem;
+}
