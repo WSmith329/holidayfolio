@@ -41,6 +41,7 @@ class Destination(models.Model):
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='destination_images/', blank=True, null=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='destinations')
+    accommodation = models.ForeignKey
 
     def __str__(self):
         return self.name
@@ -57,3 +58,12 @@ class HolidayDestination(models.Model):
 
     def __str__(self):
         return f"{self.holiday.name} - {self.destination.name}"
+
+class Accommodation(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.TextField(blank=True, null=True)
+    check_in = models.TimeField()
+    check_out = models.TimeField()
+    booking_reference = models.CharField(max_length=30)
+    cost = models.PositiveIntegerField()
+    accommodation_type
