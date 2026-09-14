@@ -23,6 +23,7 @@
           "bash": {
             "path": "/bin/bash"
           }
+        }
       }
     }
   },
