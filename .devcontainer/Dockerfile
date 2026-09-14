@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     git \
     curl \
+    openssh-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv
