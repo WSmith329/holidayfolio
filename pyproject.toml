@@ -18,3 +18,10 @@ dev = [
 
 [tool.uv]
 package = false
+
+[dependency-groups]
+dev = [
+    "debugpy>=1.8.21",
+    "djlint>=1.46.1",
+    "ruff>=0.16.7",
+]
