@@ -6,7 +6,8 @@
   "remoteUser": "vscode",
   "mounts": [
     "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig-host,type=bind,consistency=cached",
-    "source=${localEnv:HOME}/.gitconfig-wds,target=/home/vscode/.gitconfig-wds,type=bind,consistency=cached"
+    "source=${localEnv:HOME}/.gitconfig-wds,target=/home/vscode/.gitconfig-wds,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly"
   ],
   "postCreateCommand": "uv sync && git config --global --add include.path /home/vscode/.gitconfig-host && git config --global --add include.path /home/vscode/.gitconfig-wds && git config --global --add safe.directory /workspace",
   "customizations": {
