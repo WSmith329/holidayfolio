@@ -4,8 +4,10 @@ version = "0.1.0"
 description = "A personal dashboard where you can record past and upcoming holidays, track destinations, accommodation, activities, costs, photos, itineraries and statistics."
 requires-python = ">=3.14"
 dependencies = [
+    "dj-database-url>=3.1.2",
     "django>=5.1,<6.0",
     "pillow>=12.3.0",
+    "psycopg[binary]>=3.3.5",
 ]
 
 [project.optional-dependencies]

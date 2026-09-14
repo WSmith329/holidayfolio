@@ -1,0 +1,22 @@
+{
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "vscode",
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig-wds,target=/home/vscode/.gitconfig-host,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "uv sync && git config --global include.path /home/vscode/.gitconfig-host && git config --global --add safe.directory /workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/workspace/.venv/bin/python"
+      }
+    }
+  },
+  "forwardPorts": [8000, 5432]
+}
