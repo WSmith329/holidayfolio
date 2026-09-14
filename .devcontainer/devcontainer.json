@@ -17,7 +17,12 @@
         "charliermarsh.ruff"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/workspace/.venv/bin/python"
+        "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash"
+          }
       }
     }
   },
