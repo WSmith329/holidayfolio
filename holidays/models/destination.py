@@ -1,8 +1,7 @@
 from django.db import models
 
 from holidays.fields import DatePickerField
-from holidays.models import Country
-from holidays.models.holiday import Holiday
+from holidays.models import Accommodation, Country, Holiday
 
 
 class Destination(models.Model):
@@ -11,7 +10,6 @@ class Destination(models.Model):
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='destination_images/', blank=True, null=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='destinations')
-    accommodation = models.ForeignKey
 
     def __str__(self):
         return self.name
@@ -23,6 +21,7 @@ class HolidayDestination(models.Model):
     arrival_date = DatePickerField(blank=True, null=True)
     departure_date = DatePickerField(blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
+    accommodation = models.ForeignKey(Accommodation, on_delete=models.SET_NULL, related_name='destination_accommodation', blank=True, null=True)
 
     class Meta:
         unique_together = ('holiday', 'destination')
