@@ -1,7 +1,10 @@
 from django.db import models
 
 from holidays.fields import DatePickerField
-from holidays.models import Accommodation, Country, Holiday
+
+from .accommodation import Accommodation
+from .country import Country
+from .holiday import Holiday
 
 
 class Destination(models.Model):
