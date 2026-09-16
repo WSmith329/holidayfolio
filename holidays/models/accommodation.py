@@ -5,7 +5,7 @@ from ..fields import TimePickerField
 
 
 class Accommodation(models.Model):
-    class AccommodationType(models.TextChoices):
+    class Type(models.TextChoices):
         HOTEL = "HOT", _("Hotel")
         HOSTEL = "HOS", _("Hostel")
         RESORT = "RES", _("Resort")
@@ -23,6 +23,6 @@ class Accommodation(models.Model):
     check_out = TimePickerField(blank=True, null=True)
     booking_reference = models.CharField(max_length=30, blank=True, null=True)
     cost = models.PositiveIntegerField(blank=True, null=True)
-    accommodation_type = models.CharField(max_length=3, choices=AccommodationType, default=AccommodationType.HOTEL)
+    type = models.CharField(max_length=3, choices=Type, default=Type.HOTEL)
     notes = models.TextField(blank=True, null=True)
     cover_image = models.ImageField(upload_to='accommodation_covers/')
