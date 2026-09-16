@@ -13,6 +13,9 @@
     </div>
     {% for holiday_destination in object.holiday_destinations.all %}
         <div class="detail-section">
+            {% if holiday_destination.destination.image %}
+                <img src="{{ holiday_destination.destination.image.url }}" alt="{{ holiday_destination.destination.name }}" class="destination-cover-image">
+            {% endif %}
             <h2>{{ holiday_destination.destination.name }}</h2>
             <p class="destination-country">{{ holiday_destination.destination.country }}</p>
             <p>{{ holiday_destination.destination.description }}</p>
@@ -24,9 +27,34 @@
                 <div class="date">{{ holiday_destination.departure_date|date:"D" }}<br>{{ holiday_destination.departure_date|date:"j" }}</div>
                 <p>Departure</p>
             </div>
+            {% if holiday_destination.accommodation %}
+                <div class="destination-accommodation">
+                    <p class="accommodation-subtitle">STAYING AT</p>
+                    <div class="accommodation-header">
+                        <h3>{{ holiday_destination.accommodation.name }}</h3>
+                        <a class="light-orange-link" href="{% url 'accommodation-update' holiday_destination=holiday_destination.id %}"><i class="fa-solid fa-pen"></i></a>
+                        <a class="light-orange-link" href="{% url 'accommodation-delete' holiday_destination=holiday_destination.id %}"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                    <p><span class="light-orange-pill">{{ holiday_destination.accommodation.get_accommodation_type_display }}</span></p>
+                    <img src="{{ holiday_destination.accommodation.cover_image.url }}" alt="{{ holiday_destination.accommodation.name }}" class="accommodation-cover-image">
+                    {% if holiday_destination.accommodation.address %}<p>{{ holiday_destination.accommodation.address }}</p>{% endif %}
+                    {% if holiday_destination.accommodation.check_in %}<p><b>Check-in:</b> {{ holiday_destination.accommodation.check_in }}</p>{% endif %}
+                    {% if holiday_destination.accommodation.check_out %}<p><b>Check-out:</b> {{ holiday_destination.accommodation.check_out }}</p>{% endif %}
+                    {% if holiday_destination.accommodation.booking_reference %}<p><b>Booking:</b> {{ holiday_destination.accommodation.booking_reference }}</p>{% endif %}
+                    {% if holiday_destination.accommodation.cost %}<p><b>Cost:</b> {{ holiday_destination.accommodation.cost }}</p>{% endif %}
+                    {% if holiday_destination.accommodation.notes %}<p><b>Notes:</b> {{ holiday_destination.accommodation.notes }}</p>{% endif %}
+                </div>
+            {% endif %}
             <div class="links">
-                <p><a class="orange-button" href="{% url 'holiday-destination-update' pk=holiday_destination.id %}">Edit</a></p>
-                <p><a class="orange-button" href="{% url 'holiday-destination-delete' pk=holiday_destination.id %}">Delete</a></p>
+                <div>
+                    {% if not holiday_destination.accommodation %}
+                        <a class="orange-button" href="{% url 'accommodation-create' holiday_destination=holiday_destination.id %}"><i class="fa-solid fa-plus-circle"></i> Accommodation</a>
+                    {% endif %}
+                </div>
+                <div>
+                    <a class="orange-button" href="{% url 'holiday-destination-update' pk=holiday_destination.id %}">Edit</a>
+                    <a class="orange-button" href="{% url 'holiday-destination-delete' pk=holiday_destination.id %}">Delete</a>
+                </div>
             </div>
         </div>
     {% empty %}

@@ -33,6 +33,24 @@ p, div {
     transition: color ease 0.3s;
 }
 
+.light-orange-link {
+    text-decoration: none;
+    color: color-mix(in srgb, orange 25%, white);
+}
+.light-orange-link:hover {
+    color: orange;
+    transition: color ease 0.3s;
+}
+
+/* Accents */
+.light-orange-pill {
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: color-mix(in srgb, orange 25%, white);
+    color: orange;
+    font-weight: bold;
+}
+
 /* Page structure styles */
 body {
     color: black;
@@ -131,6 +149,17 @@ main .detail-section {
     background-color: color-mix(in srgb, black 2%, white);
 }
 
+main .detail-section .destination-cover-image {
+    margin-top: 1.5rem;
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    object-position: 50% 50%;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 25px 50px -10px, rgba(0, 0, 0, 0.3) 0px 15px 30px -15px, rgba(10, 37, 64, 0.35) 0px -1px 3px 0px inset;
+}
+
 main .destination-date {
     display: flex;
     align-items: center;
@@ -164,6 +193,42 @@ main .detail-section .links {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin: 1.5rem 0 1rem 0;
+}
+
+main .destination-accommodation {
+    margin: 2rem 0 2rem 0;
+}
+
+main .destination-accommodation .accommodation-cover-image {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    object-position: 50% 50%;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 25px 50px -10px, rgba(0, 0, 0, 0.3) 0px 15px 30px -15px, rgba(10, 37, 64, 0.35) 0px -1px 3px 0px inset;
+}
+
+main .destination-accommodation .accommodation-subtitle {
+    margin: 0;
+    font-size: 0.8rem; 
+    color: gray;
+}
+
+main .destionation-accomodation .accommodation-header {
+    display: flex;
+    gap: 2rem;
+}
+
+main .destination-accommodation .accommodation-header h3 {
+    margin: 0;
+    display: inline-block;
+}
+
+main .destination-accommodation p {
+    margin: 0.7rem 0 0.7rem 0;
+    font-size: 0.8rem;
 }
 
 main .destination-country {
