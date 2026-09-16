@@ -38,8 +38,8 @@
                     <p><span class="light-orange-pill">{{ holiday_destination.accommodation.get_type_display }}</span></p>
                     <img src="{{ holiday_destination.accommodation.cover_image.url }}" alt="{{ holiday_destination.accommodation.name }}" class="accommodation-cover-image">
                     {% if holiday_destination.accommodation.address %}<p>{{ holiday_destination.accommodation.address }}</p>{% endif %}
-                    {% if holiday_destination.accommodation.check_in %}<p><b>Check-in:</b> {{ holiday_destination.accommodation.check_in }}</p>{% endif %}
-                    {% if holiday_destination.accommodation.check_out %}<p><b>Check-out:</b> {{ holiday_destination.accommodation.check_out }}</p>{% endif %}
+                    {% if holiday_destination.accommodation.check_in %}<p><b>Check-in:</b> {{ holiday_destination.accommodation.check_in|time:"H:i" }}</p>{% endif %}
+                    {% if holiday_destination.accommodation.check_out %}<p><b>Check-out:</b> {{ holiday_destination.accommodation.check_out|time:"H:i" }}</p>{% endif %}
                     {% if holiday_destination.accommodation.booking_reference %}<p><b>Booking:</b> {{ holiday_destination.accommodation.booking_reference }}</p>{% endif %}
                     {% if holiday_destination.accommodation.cost %}<p><b>Cost:</b> {{ holiday_destination.accommodation.cost }}</p>{% endif %}
                     {% if holiday_destination.accommodation.notes %}<p><b>Notes:</b> {{ holiday_destination.accommodation.notes }}</p>{% endif %}
