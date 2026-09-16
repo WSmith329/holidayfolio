@@ -1,6 +1,5 @@
 # Holidayfolio .gitignore
-media/holiday_covers
-media/avatars
+media/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
